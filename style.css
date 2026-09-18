@@ -1,0 +1,805 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+
+  background: #fff8fa;
+
+  color: #4d343b;
+
+  overflow-x: hidden;
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+section {
+  min-height: 100vh;
+
+  padding: 80px 20px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+.small-title {
+  font-family: Arial, sans-serif;
+
+  font-size: 12px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: #ad7180;
+
+  margin-bottom: 20px;
+}
+
+button {
+  border: none;
+
+  cursor: pointer;
+
+  font-family: Arial, sans-serif;
+}
+
+.next-button,
+.blow-button {
+  margin-top: 35px;
+
+  padding: 15px 28px;
+
+  border-radius: 30px;
+
+  background: #b9687d;
+
+  color: white;
+
+  font-size: 14px;
+
+  transition: 0.3s;
+}
+
+.next-button:hover,
+.blow-button:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 10px 25px rgba(150, 70, 90, 0.2);
+}
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music-button {
+  position: fixed;
+
+  right: 20px;
+
+  top: 20px;
+
+  width: 50px;
+
+  height: 50px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  color: #a85e72;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+
+  z-index: 1000;
+
+  font-size: 20px;
+}
+
+/* =========================
+   OPENING
+========================= */
+
+.opening {
+  background:
+    radial-gradient(circle at top left, #ffe4ec, transparent 40%),
+    radial-gradient(circle at bottom right, #f5dce3, transparent 40%), #fff8fa;
+}
+
+.opening-content {
+  max-width: 700px;
+}
+
+.opening h1 {
+  font-size: clamp(50px, 10vw, 90px);
+
+  font-weight: normal;
+
+  line-height: 1.05;
+}
+
+.opening h1 span {
+  color: #b9687d;
+
+  font-style: italic;
+}
+
+.opening-text {
+  font-family: Arial, sans-serif;
+
+  color: #80666e;
+
+  margin-top: 25px;
+}
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope-container {
+  margin: 50px auto 20px;
+
+  width: 280px;
+
+  height: 190px;
+
+  perspective: 900px;
+}
+
+.envelope {
+  width: 280px;
+
+  height: 180px;
+
+  position: relative;
+
+  cursor: pointer;
+}
+
+.envelope-back {
+  position: absolute;
+
+  inset: 0;
+
+  background: #d98b9b;
+
+  border-radius: 8px;
+}
+
+.envelope-front {
+  position: absolute;
+
+  left: 0;
+
+  bottom: 0;
+
+  width: 0;
+
+  height: 0;
+
+  border-left: 140px solid transparent;
+
+  border-right: 140px solid transparent;
+
+  border-bottom: 95px solid #c9788a;
+
+  z-index: 3;
+}
+
+.envelope-flap {
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 0;
+
+  height: 0;
+
+  border-left: 140px solid transparent;
+
+  border-right: 140px solid transparent;
+
+  border-top: 95px solid #e6a4b1;
+
+  transform-origin: top;
+
+  transition: 0.8s;
+
+  z-index: 4;
+}
+
+.letter-paper {
+  position: absolute;
+
+  left: 25px;
+
+  bottom: 10px;
+
+  width: 230px;
+
+  height: 135px;
+
+  background: #fffdfd;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  color: #a55f71;
+
+  font-style: italic;
+
+  transition: 0.8s;
+
+  z-index: 2;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.open .letter-paper {
+  transform: translateY(-100px);
+}
+
+/* =========================
+   PETALS
+========================= */
+
+.petals span {
+  position: fixed;
+
+  top: -30px;
+
+  font-size: 25px;
+
+  animation: falling 7s linear infinite;
+
+  opacity: 0.7;
+}
+
+.petals span:nth-child(1) {
+  left: 10%;
+  animation-delay: 1s;
+}
+
+.petals span:nth-child(2) {
+  left: 30%;
+  animation-delay: 3s;
+}
+
+.petals span:nth-child(3) {
+  left: 55%;
+  animation-delay: 0s;
+}
+
+.petals span:nth-child(4) {
+  left: 75%;
+  animation-delay: 4s;
+}
+
+.petals span:nth-child(5) {
+  left: 90%;
+  animation-delay: 2s;
+}
+
+@keyframes falling {
+  0% {
+    transform: translateY(-30px) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+/* =========================
+   MAIN
+========================= */
+
+#mainContent {
+  display: none;
+}
+
+/* =========================
+   BIRTHDAY
+========================= */
+
+.birthday-section {
+  flex-direction: column;
+}
+
+.birthday-section h1 {
+  font-size: clamp(50px, 9vw, 80px);
+
+  font-weight: normal;
+
+  font-style: italic;
+
+  color: #9f566b;
+}
+
+.birthday-name {
+  font-family: Arial, sans-serif;
+
+  margin-top: 15px;
+
+  color: #80666e;
+}
+
+.main-photo {
+  width: min(390px, 90%);
+
+  margin: 45px auto 30px;
+}
+
+.main-photo img {
+  width: 100%;
+
+  display: block;
+
+  border-radius: 200px 200px 20px 20px;
+
+  box-shadow: 0 20px 50px rgba(80, 40, 50, 0.15);
+}
+
+.description {
+  max-width: 550px;
+
+  font-family: Arial, sans-serif;
+
+  line-height: 1.8;
+
+  color: #765d65;
+}
+
+/* =========================
+   CAKE
+========================= */
+
+.cake-section {
+  flex-direction: column;
+
+  background: #fbeef2;
+}
+
+.cake-section h2 {
+  font-size: 45px;
+
+  font-weight: normal;
+}
+
+.cake-instruction {
+  font-family: Arial, sans-serif;
+
+  max-width: 500px;
+
+  line-height: 1.8;
+
+  color: #765d65;
+}
+
+/* CAKE CONTAINER */
+
+.cake-container {
+  position: relative;
+
+  width: 350px;
+
+  height: 300px;
+
+  margin-top: 35px;
+}
+
+/* CAKE */
+
+.cake {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 20px;
+
+  transform: translateX(-50%);
+}
+
+.cake-top {
+  width: 280px;
+
+  height: 80px;
+
+  background: #f5c1c9;
+
+  border-radius: 50%;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.cream {
+  position: absolute;
+
+  width: 100%;
+
+  height: 30px;
+
+  top: 20px;
+
+  background: #fff5f5;
+
+  border-radius: 50%;
+}
+
+.cake-body {
+  width: 280px;
+
+  height: 110px;
+
+  background: #d98596;
+
+  margin-top: -35px;
+
+  border-radius: 0 0 20px 20px;
+}
+
+.cake-line {
+  height: 10px;
+
+  width: 240px;
+
+  margin: 20px auto;
+
+  background: #f4b4c0;
+
+  border-radius: 20px;
+}
+
+/* CANDLES */
+
+.candles {
+  position: absolute;
+
+  top: 45px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  gap: 25px;
+}
+
+.candle {
+  width: 16px;
+
+  height: 65px;
+
+  border-radius: 5px;
+
+  background: repeating-linear-gradient(
+    135deg,
+    #fff 0px,
+    #fff 7px,
+    #d77f91 7px,
+    #d77f91 14px
+  );
+}
+
+.flame {
+  width: 19px;
+
+  height: 27px;
+
+  position: absolute;
+
+  margin-left: -1px;
+
+  margin-top: -30px;
+
+  background: #f5a43f;
+
+  border-radius: 50% 50% 50% 50%;
+
+  box-shadow: 0 0 20px rgba(245, 164, 63, 0.7);
+
+  animation: flame 0.2s infinite alternate;
+}
+
+@keyframes flame {
+  from {
+    transform: scale(1) rotate(-3deg);
+  }
+
+  to {
+    transform: scale(1.15) rotate(3deg);
+  }
+}
+
+/* API BUTTON */
+
+.blow-button {
+  font-size: 16px;
+}
+
+.blow-button.blown {
+  background: #ddd;
+
+  color: #777;
+}
+
+/* WISH */
+
+.wish-message {
+  display: none;
+
+  margin-top: 30px;
+
+  max-width: 500px;
+
+  padding: 35px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  box-shadow: 0 15px 40px rgba(80, 40, 50, 0.08);
+
+  animation: appear 0.8s ease;
+}
+
+.wish-message.show {
+  display: block;
+}
+
+.wish-message h2 {
+  font-size: 35px;
+
+  font-weight: normal;
+
+  color: #a45b70;
+}
+
+.wish-message p {
+  font-family: Arial, sans-serif;
+
+  line-height: 1.8;
+
+  color: #765d65;
+}
+
+#wishButton {
+  margin-top: 20px;
+
+  padding: 14px 25px;
+
+  border-radius: 30px;
+
+  background: #b9687d;
+
+  color: white;
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-section {
+  flex-direction: column;
+}
+
+.letter-section h2,
+.photos-section h2 {
+  font-size: 45px;
+
+  font-weight: normal;
+}
+
+.letter-content {
+  max-width: 650px;
+
+  padding: 45px;
+
+  margin-top: 25px;
+
+  text-align: left;
+
+  background: white;
+
+  border-radius: 8px;
+
+  box-shadow: 0 15px 40px rgba(80, 40, 50, 0.08);
+}
+
+.letter-content p {
+  font-family: Arial, sans-serif;
+
+  line-height: 1.9;
+
+  margin-bottom: 20px;
+
+  color: #765d65;
+}
+
+.letter-content h3 {
+  font-size: 30px;
+
+  font-weight: normal;
+
+  text-align: center;
+
+  color: #a45b70;
+}
+
+/* =========================
+   PHOTOS
+========================= */
+
+.photos-section {
+  flex-direction: column;
+
+  background: #fbeef2;
+}
+
+.photo-grid {
+  width: min(900px, 95%);
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+
+  margin-top: 20px;
+}
+
+.photo-card {
+  background: white;
+
+  padding: 10px;
+
+  box-shadow: 0 10px 25px rgba(80, 40, 50, 0.1);
+}
+
+.photo-card:nth-child(1) {
+  transform: rotate(-3deg);
+}
+
+.photo-card:nth-child(2) {
+  transform: rotate(2deg);
+}
+
+.photo-card:nth-child(3) {
+  transform: rotate(-1deg);
+}
+
+.photo-card img {
+  width: 100%;
+
+  aspect-ratio: 3 / 4;
+
+  object-fit: cover;
+}
+
+.photo-card p {
+  padding: 15px;
+
+  font-style: italic;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final-section {
+  flex-direction: column;
+}
+
+.final-section h1 {
+  font-size: clamp(42px, 8vw, 70px);
+
+  font-weight: normal;
+
+  font-style: italic;
+
+  color: #9f566b;
+
+  line-height: 1.2;
+}
+
+.final-section p {
+  max-width: 550px;
+
+  font-family: Arial, sans-serif;
+
+  line-height: 1.8;
+
+  color: #765d65;
+}
+
+.final-hearts {
+  color: #bd6c7e;
+
+  font-size: 30px;
+
+  margin-bottom: 20px;
+}
+
+.flowers {
+  font-size: 35px;
+
+  margin-top: 35px;
+}
+
+.final-text {
+  margin-top: 30px;
+
+  font-style: italic;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes appear {
+  from {
+    opacity: 0;
+
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+  section {
+    padding: 70px 18px;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+
+    max-width: 350px;
+  }
+
+  .cake-container {
+    transform: scale(0.85);
+
+    margin-top: 15px;
+  }
+
+  .letter-content {
+    padding: 30px 25px;
+  }
+
+  .envelope-container {
+    transform: scale(0.85);
+  }
+}
