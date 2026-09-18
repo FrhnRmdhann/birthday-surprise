@@ -151,113 +151,98 @@ button {
 ========================= */
 
 .envelope-container {
-  margin: 50px auto 20px;
-
-  width: 280px;
-
-  height: 190px;
-
-  perspective: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 35px 0;
 }
 
 .envelope {
-  width: 280px;
-
-  height: 180px;
-
   position: relative;
-
+  width: 280px;
+  height: 180px;
   cursor: pointer;
+  perspective: 1000px;
+  overflow: visible;
 }
 
+/* Bagian belakang amplop */
 .envelope-back {
   position: absolute;
-
   inset: 0;
-
-  background: #d98b9b;
-
-  border-radius: 8px;
+  background: #f8e9e9;
+  border-radius: 5px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  z-index: 1;
 }
 
+/* Kertas */
+.letter-paper {
+  position: absolute;
+  width: 220px;
+  height: 140px;
+  left: 30px;
+  top: 20px;
+
+  background: #fffdf8;
+  border-radius: 3px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #8b5e62;
+  font-size: 16px;
+  font-weight: 600;
+
+  z-index: 2;
+
+  transition: transform 1s ease;
+}
+
+/* Bagian depan amplop */
 .envelope-front {
   position: absolute;
-
   left: 0;
-
   bottom: 0;
 
   width: 0;
-
   height: 0;
 
   border-left: 140px solid transparent;
-
   border-right: 140px solid transparent;
-
-  border-bottom: 95px solid #c9788a;
-
-  z-index: 3;
-}
-
-.envelope-flap {
-  position: absolute;
-
-  top: 0;
-
-  left: 0;
-
-  width: 0;
-
-  height: 0;
-
-  border-left: 140px solid transparent;
-
-  border-right: 140px solid transparent;
-
-  border-top: 95px solid #e6a4b1;
-
-  transform-origin: top;
-
-  transition: 0.8s;
+  border-bottom: 90px solid #f3d8dc;
 
   z-index: 4;
 }
 
-.letter-paper {
+/* Penutup atas amplop */
+.envelope-flap {
   position: absolute;
+  top: 0;
+  left: 0;
 
-  left: 25px;
+  width: 0;
+  height: 0;
 
-  bottom: 10px;
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-top: 95px solid #eecbd0;
 
-  width: 230px;
+  transform-origin: top center;
+  transition: transform 0.8s ease;
 
-  height: 135px;
-
-  background: #fffdfd;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  color: #a55f71;
-
-  font-style: italic;
-
-  transition: 0.8s;
-
-  z-index: 2;
+  z-index: 5;
 }
 
+/* Saat dibuka */
 .envelope.open .envelope-flap {
   transform: rotateX(180deg);
 }
 
 .envelope.open .letter-paper {
-  transform: translateY(-100px);
+  transform: translateY(-90px);
+  z-index: 3;
 }
 
 /* =========================
