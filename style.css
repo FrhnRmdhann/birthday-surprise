@@ -338,21 +338,22 @@ button {
 
 .letter-overlay {
   position: fixed;
-
   inset: 0;
+  width: 100%;
+  height: 100%;
 
   display: none;
-
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
   padding: 20px;
+  box-sizing: border-box;
 
-  background: rgba(35, 25, 30, 0.58);
+  background: rgba(30, 20, 25, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 
-  backdrop-filter: blur(7px);
-
-  z-index: 9998;
+  z-index: 99999;
 }
 
 .letter-overlay.show {
@@ -364,31 +365,26 @@ button {
 ========================= */
 
 .big-letter {
-  width: min(700px, 90vw);
+  position: relative;
 
+  width: min(700px, 90vw);
   height: min(760px, 85vh);
 
   background: #fffdf8;
+  color: #333;
 
-  border-radius: 12px;
+  border-radius: 14px;
 
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
 
   overflow: hidden;
 
-  opacity: 0;
-
-  transform: scale(0.15) translateY(40px);
-
-  transition:
-    transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1),
-    opacity 0.5s ease;
-}
-
-.letter-overlay.show .big-letter {
   opacity: 1;
+  transform: scale(1);
 
-  transform: scale(1) translateY(0);
+  box-sizing: border-box;
+
+  z-index: 100000;
 }
 
 /* =========================
@@ -397,8 +393,9 @@ button {
 
 .big-letter-content {
   width: 100%;
-
   height: 100%;
+
+  box-sizing: border-box;
 
   padding: 55px 50px;
 
@@ -406,57 +403,50 @@ button {
 
   text-align: center;
 
-  color: #5c4a4a;
-}
-
-.letter-small-title {
-  font-size: 12px;
-
-  letter-spacing: 3px;
-
-  text-transform: uppercase;
-
-  color: #a17c80;
-
-  margin-bottom: 15px;
+  color: #333;
+  background: #fffdf8;
 }
 
 .big-letter-content h2 {
-  font-size: 36px;
+  margin: 10px 0 25px;
 
-  font-weight: 400;
+  color: #333;
 
-  color: #765458;
-
-  margin-bottom: 30px;
-}
-
-.big-letter-content p {
-  max-width: 570px;
-
-  margin: 0 auto 18px;
-
-  font-size: 16px;
-
-  line-height: 1.9;
+  font-size: 32px;
 }
 
 .big-letter-content h3 {
-  margin-top: 35px;
+  margin-top: 30px;
+
+  color: #333;
 
   font-size: 22px;
+}
 
-  color: #8b646a;
+.big-letter-content p {
+  color: #444;
 
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.8;
+
+  margin: 15px 0;
+}
+
+.letter-small-title {
+  color: #999 !important;
+
+  font-size: 13px !important;
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
 }
 
 .tap-hint {
-  margin-top: 45px !important;
+  margin-top: 35px !important;
+
+  color: #999 !important;
 
   font-size: 12px !important;
-
-  opacity: 0.55;
 }
 
 /* =========================
@@ -799,38 +789,12 @@ button {
 ========================= */
 
 @media (max-width: 600px) {
-  .opening h1 {
-    font-size: 45px;
-  }
-
-  .envelope {
-    width: 250px;
-    height: 160px;
-  }
-
-  .envelope-front {
-    border-left-width: 125px;
-    border-right-width: 125px;
-    border-bottom-width: 80px;
-  }
-
-  .envelope-flap {
-    border-left-width: 125px;
-    border-right-width: 125px;
-    border-top-width: 85px;
-  }
-
-  .letter-paper {
-    width: 195px;
-    height: 125px;
-
-    left: 27px;
-    top: 18px;
+  .letter-overlay {
+    padding: 15px;
   }
 
   .big-letter {
     width: 90vw;
-
     height: 82vh;
 
     border-radius: 10px;
@@ -844,27 +808,12 @@ button {
     font-size: 27px;
   }
 
+  .big-letter-content h3 {
+    font-size: 19px;
+  }
+
   .big-letter-content p {
     font-size: 14px;
-
     line-height: 1.8;
-  }
-
-  .big-letter-content h3 {
-    font-size: 18px;
-  }
-
-  .photo-grid {
-    grid-template-columns: 1fr;
-
-    width: min(350px, 90vw);
-  }
-
-  .birthday-section,
-  .cake-section,
-  .letter-section,
-  .photos-section,
-  .final-section {
-    padding: 80px 20px;
   }
 }

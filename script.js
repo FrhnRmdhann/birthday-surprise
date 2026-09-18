@@ -1,26 +1,25 @@
-/* =========================
-   ELEMENTS
-========================= */
+/* =========================================
+   ELEMENT
+========================================= */
 
 const music = document.getElementById("birthdayMusic");
-
 const musicButton = document.getElementById("musicButton");
 
 const openButton = document.getElementById("openButton");
-
 const envelope = document.getElementById("envelope");
 
 const letterOverlay = document.getElementById("letterOverlay");
 
-/* =========================
+/* =========================================
    OPEN LETTER
-========================= */
+========================================= */
 
 openButton.addEventListener("click", function (event) {
   event.stopPropagation();
 
-  /* Buka flap */
+  console.log("Tombol buka surat diklik");
 
+  /* Buka amplop */
   envelope.classList.add("open");
 
   /* Putar musik */
@@ -30,47 +29,44 @@ openButton.addEventListener("click", function (event) {
     .then(function () {
       musicButton.textContent = "🔊";
     })
-    .catch(function () {
-      console.log("Musik belum bisa dimainkan.");
+    .catch(function (error) {
+      console.log("Musik tidak bisa otomatis dimainkan:", error);
     });
 
   /*
-           Tunggu amplop terbuka
-        */
+        Tunggu animasi amplop selesai,
+        kemudian tampilkan surat besar
+    */
 
   setTimeout(function () {
+    console.log("Menampilkan letter overlay");
+
     letterOverlay.classList.add("show");
   }, 900);
 });
 
-/* =========================
+/* =========================================
    CLOSE LETTER
-========================= */
+========================================= */
 
-function closeLetter() {
+letterOverlay.addEventListener("click", function () {
+  console.log("Letter ditutup");
+
   letterOverlay.classList.remove("show");
 
   /*
-       Setelah surat mengecil/
-       menghilang, tutup amplop
+        Setelah overlay hilang,
+        tutup kembali amplop
     */
 
   setTimeout(function () {
     envelope.classList.remove("open");
-  }, 700);
-}
-
-/* =========================
-   TAP ANYWHERE
-========================= */
-
-letterOverlay.addEventListener("click", function () {
-  closeLetter();
+  }, 300);
 });
 
-/* =========================
-   MUSIC
-========================= */
+/* =========================================
+   MUSIC BUTTON
+========================================= */
 
 musicButton.addEventListener("click", function (event) {
   event.stopPropagation();
@@ -86,12 +82,11 @@ musicButton.addEventListener("click", function (event) {
   }
 });
 
-/* =========================
-   CAKE
-========================= */
+/* =========================================
+   GO TO CAKE
+========================================= */
 
 const toCake = document.getElementById("toCake");
-
 const cakeSection = document.getElementById("cakeSection");
 
 toCake.addEventListener("click", function () {
@@ -100,22 +95,26 @@ toCake.addEventListener("click", function () {
   });
 });
 
-/* =========================
+/* =========================================
    BLOW CANDLE
-========================= */
+========================================= */
 
 const blowButton = document.getElementById("blowButton");
-
 const flames = document.querySelectorAll(".flame");
-
 const wishMessage = document.getElementById("wishMessage");
 
 blowButton.addEventListener("click", function () {
+  /* Matikan semua api */
+
   flames.forEach(function (flame) {
     flame.style.display = "none";
   });
 
+  /* Ubah tombol */
+
   blowButton.textContent = "✨ Lilinnya sudah padam!";
+
+  /* Tampilkan wish */
 
   setTimeout(function () {
     wishMessage.classList.add("show");
@@ -127,12 +126,11 @@ blowButton.addEventListener("click", function () {
   }, 800);
 });
 
-/* =========================
-   WISH
-========================= */
+/* =========================================
+   WISH BUTTON
+========================================= */
 
 const wishButton = document.getElementById("wishButton");
-
 const letterSection = document.querySelector(".letter-section");
 
 wishButton.addEventListener("click", function () {
@@ -145,12 +143,11 @@ wishButton.addEventListener("click", function () {
   }, 1000);
 });
 
-/* =========================
-   PHOTOS
-========================= */
+/* =========================================
+   GO TO PHOTOS
+========================================= */
 
 const toPhotos = document.getElementById("toPhotos");
-
 const photosSection = document.querySelector(".photos-section");
 
 toPhotos.addEventListener("click", function () {
@@ -159,12 +156,11 @@ toPhotos.addEventListener("click", function () {
   });
 });
 
-/* =========================
-   FINAL
-========================= */
+/* =========================================
+   GO TO FINAL
+========================================= */
 
 const toFinal = document.getElementById("toFinal");
-
 const finalSection = document.querySelector(".final-section");
 
 toFinal.addEventListener("click", function () {
