@@ -10,10 +10,7 @@
   </head>
 
   <body>
-    <!-- =========================
-         MUSIC
-    ========================== -->
-
+    <!-- MUSIC -->
     <audio id="birthdayMusic" loop>
       <source src="assets/birthday-song.mp3" type="audio/mpeg" />
     </audio>
@@ -25,8 +22,6 @@
     ========================== -->
 
     <section class="opening" id="opening">
-      <!-- Falling flowers -->
-
       <div class="petals">
         <span>🌸</span>
         <span>🌷</span>
@@ -47,92 +42,81 @@
 
         <p class="opening-text">Aku punya sesuatu kecil buat kamu.</p>
 
-        <!-- =========================
-                 ENVELOPE
-            ========================== -->
+        <!-- ENVELOPE -->
 
         <div class="envelope-container">
           <div class="envelope" id="envelope">
-            <!-- Back -->
-
             <div class="envelope-back"></div>
 
-            <!-- Paper -->
+            <!-- PAPER DI DALAM AMPLOP -->
 
             <div class="letter-paper" id="letterPaper">
-              <!-- Preview -->
-
-              <div class="letter-preview">
-                <span> For You 🤍 </span>
-              </div>
-
-              <!-- Full Letter -->
-
-              <div class="letter-full">
-                <p class="letter-small-title">a little message for you</p>
-
-                <h2>Happy Birthday 🤍</h2>
-
-                <p>
-                  Hari ini adalah hari spesial kamu. Jadi aku ingin memberikan
-                  sesuatu kecil yang mungkin bisa membuat kamu tersenyum.
-                </p>
-
-                <p>
-                  Semoga di umur yang baru ini, kamu selalu diberikan kesehatan,
-                  kebahagiaan, dan banyak hal baik.
-                </p>
-
-                <p>
-                  Semoga semua hal yang sedang kamu perjuangkan bisa berjalan
-                  dengan lancar.
-                </p>
-
-                <p>Semoga satu per satu impian kamu bisa terwujud.</p>
-
-                <p>
-                  Jangan lupa untuk selalu tersenyum dan menikmati setiap
-                  perjalanan kamu.
-                </p>
-
-                <p>
-                  Dan semoga kamu selalu punya alasan untuk bahagia setiap
-                  harinya.
-                </p>
-
-                <h3>
-                  Once again...<br />
-                  Happy Birthday 🎂
-                </h3>
-
-                <p class="tap-hint">Ketuk di mana saja untuk kembali 🤍</p>
-              </div>
+              <div class="letter-preview">For You 🤍</div>
             </div>
 
-            <!-- Front -->
-
             <div class="envelope-front"></div>
-
-            <!-- Flap -->
 
             <div class="envelope-flap"></div>
           </div>
         </div>
-
-        <!-- Open Button -->
 
         <button id="openButton">Buka surat ✨</button>
       </div>
     </section>
 
     <!-- =========================
+         SURAT BESAR
+    ========================== -->
+
+    <div class="letter-overlay" id="letterOverlay">
+      <div class="big-letter" id="bigLetter">
+        <div class="big-letter-content">
+          <p class="letter-small-title">a little message for you</p>
+
+          <h2>Happy Birthday 🤍</h2>
+
+          <p>
+            Hari ini adalah hari spesial kamu. Jadi aku ingin memberikan sesuatu
+            kecil yang mungkin bisa membuat kamu tersenyum.
+          </p>
+
+          <p>
+            Semoga di umur yang baru ini, kamu selalu diberikan kesehatan,
+            kebahagiaan, dan banyak hal baik.
+          </p>
+
+          <p>
+            Semoga semua hal yang sedang kamu perjuangkan bisa berjalan dengan
+            lancar.
+          </p>
+
+          <p>Semoga satu per satu impian kamu bisa terwujud.</p>
+
+          <p>
+            Jangan lupa untuk selalu tersenyum dan menikmati setiap perjalanan
+            kamu.
+          </p>
+
+          <p>
+            Dan semoga kamu selalu punya alasan untuk bahagia setiap harinya.
+          </p>
+
+          <h3>
+            Once again...<br />
+            Happy Birthday 🎂
+          </h3>
+
+          <p class="tap-hint">Ketuk di mana saja untuk kembali 🤍</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================
          MAIN CONTENT
     ========================== -->
 
     <main id="mainContent">
-      <!-- =========================
-             BIRTHDAY
-        ========================== -->
+      <!-- BIRTHDAY -->
 
       <section class="birthday-section">
         <p class="small-title">today is your special day</p>
@@ -153,9 +137,7 @@
         <button class="next-button" id="toCake">Ada sesuatu lagi 🎂</button>
       </section>
 
-      <!-- =========================
-             CAKE
-        ========================== -->
+      <!-- CAKE -->
 
       <section class="cake-section" id="cakeSection">
         <p class="small-title">make a wish</p>
@@ -179,7 +161,6 @@
 
             <div class="cake-body">
               <div class="cake-line"></div>
-
               <div class="cake-line"></div>
             </div>
           </div>
@@ -220,9 +201,7 @@
         </div>
       </section>
 
-      <!-- =========================
-             LETTER
-        ========================== -->
+      <!-- LETTER SECTION -->
 
       <section class="letter-section">
         <p class="small-title">a little message</p>
@@ -260,9 +239,7 @@
         </button>
       </section>
 
-      <!-- =========================
-             PHOTOS
-        ========================== -->
+      <!-- PHOTOS -->
 
       <section class="photos-section">
         <p class="small-title">little memories</p>
@@ -292,9 +269,7 @@
         <button class="next-button" id="toFinal">Satu hal terakhir 🤍</button>
       </section>
 
-      <!-- =========================
-             FINAL
-        ========================== -->
+      <!-- FINAL -->
 
       <section class="final-section">
         <div class="final-hearts">♡　♡　♡</div>
@@ -316,10 +291,6 @@
         <p class="final-text">Once again, happy birthday. 🎂</p>
       </section>
     </main>
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
 
     <script src="script.js"></script>
   </body>

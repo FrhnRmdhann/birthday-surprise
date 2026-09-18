@@ -1,7 +1,3 @@
-/* =========================
-   GLOBAL
-========================= */
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -28,7 +24,7 @@ button {
 }
 
 /* =========================
-   MUSIC BUTTON
+   MUSIC
 ========================= */
 
 .music-button {
@@ -43,7 +39,7 @@ button {
   border: none;
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
 
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
 
@@ -60,6 +56,7 @@ button {
   min-height: 100vh;
 
   display: flex;
+
   justify-content: center;
   align-items: center;
 
@@ -132,7 +129,6 @@ button {
 
 .petals span:nth-child(1) {
   left: 10%;
-  animation-delay: 0s;
 }
 
 .petals span:nth-child(2) {
@@ -202,12 +198,8 @@ button {
   width: 280px;
   height: 180px;
 
-  cursor: pointer;
-
   perspective: 1000px;
 }
-
-/* BACK */
 
 .envelope-back {
   position: absolute;
@@ -223,7 +215,9 @@ button {
   z-index: 1;
 }
 
-/* PAPER */
+/* =========================
+   SMALL PAPER
+========================= */
 
 .letter-paper {
   position: absolute;
@@ -240,25 +234,6 @@ button {
 
   z-index: 2;
 
-  overflow: hidden;
-
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-
-  transition:
-    transform 1s cubic-bezier(0.22, 0.61, 0.36, 1),
-    width 1s ease,
-    height 1s ease,
-    left 1s ease,
-    top 1s ease,
-    border-radius 1s ease;
-}
-
-/* PAPER PREVIEW */
-
-.letter-preview {
-  width: 100%;
-  height: 100%;
-
   display: flex;
 
   justify-content: center;
@@ -269,71 +244,19 @@ button {
   font-size: 16px;
 
   font-weight: 600;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+  transition: transform 0.9s ease;
 }
 
-/* FULL LETTER */
-
-.letter-full {
-  display: none;
-
-  padding: 45px 35px;
-
-  text-align: center;
-
-  color: #5c4a4a;
-
-  overflow-y: auto;
-
-  height: 100%;
+.envelope.open .letter-paper {
+  transform: translateY(-85px);
 }
 
-.letter-small-title {
-  font-size: 12px;
-
-  letter-spacing: 3px;
-
-  text-transform: uppercase;
-
-  color: #a17c80;
-
-  margin-bottom: 12px;
-}
-
-.letter-full h2 {
-  font-size: 32px;
-
-  margin-bottom: 25px;
-
-  color: #765458;
-}
-
-.letter-full p {
-  font-size: 16px;
-
-  line-height: 1.8;
-
-  margin: 12px auto;
-
-  max-width: 600px;
-}
-
-.letter-full h3 {
-  margin-top: 30px;
-
-  font-size: 20px;
-
-  color: #8b5e62;
-}
-
-.tap-hint {
-  margin-top: 35px !important;
-
-  font-size: 12px !important;
-
-  opacity: 0.55;
-}
-
-/* FRONT */
+/* =========================
+   ENVELOPE FRONT
+========================= */
 
 .envelope-front {
   position: absolute;
@@ -345,13 +268,17 @@ button {
   height: 0;
 
   border-left: 140px solid transparent;
+
   border-right: 140px solid transparent;
+
   border-bottom: 90px solid #f3d8dc;
 
   z-index: 4;
 }
 
-/* FLAP */
+/* =========================
+   ENVELOPE FLAP
+========================= */
 
 .envelope-flap {
   position: absolute;
@@ -363,7 +290,9 @@ button {
   height: 0;
 
   border-left: 140px solid transparent;
+
   border-right: 140px solid transparent;
+
   border-top: 95px solid #eecbd0;
 
   transform-origin: top center;
@@ -373,93 +302,8 @@ button {
   z-index: 5;
 }
 
-/* OPEN ENVELOPE */
-
 .envelope.open .envelope-flap {
   transform: rotateX(180deg);
-}
-
-.envelope.open .letter-paper {
-  transform: translateY(-90px);
-
-  z-index: 6;
-}
-
-/* =========================
-   LETTER EXPANDING
-========================= */
-
-body.letter-open {
-  overflow: hidden;
-}
-
-body.letter-open::before {
-  content: "";
-
-  position: fixed;
-
-  inset: 0;
-
-  background: rgba(30, 20, 25, 0.55);
-
-  backdrop-filter: blur(5px);
-
-  z-index: 9998;
-
-  animation: backdropAppear 0.6s ease;
-}
-
-.letter-paper.expanding {
-  position: fixed;
-
-  width: min(85vw, 700px);
-
-  height: min(80vh, 750px);
-
-  left: 50%;
-  top: 50%;
-
-  transform: translate(-50%, -50%) scale(1);
-
-  border-radius: 10px;
-
-  z-index: 9999;
-
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
-}
-
-.letter-paper.expanding .letter-preview {
-  display: none;
-}
-
-.letter-paper.expanding .letter-full {
-  display: block;
-
-  animation: letterTextAppear 0.8s ease forwards;
-}
-
-@keyframes letterTextAppear {
-  from {
-    opacity: 0;
-
-    transform: translateY(25px);
-  }
-
-  to {
-    opacity: 1;
-
-    transform: translateY(0);
-  }
-}
-
-@keyframes backdropAppear {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }
 
 /* =========================
@@ -481,15 +325,138 @@ body.letter-open::before {
 
   box-shadow: 0 8px 25px rgba(139, 100, 106, 0.25);
 
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 #openButton:hover {
   transform: translateY(-3px);
+}
 
-  box-shadow: 0 12px 30px rgba(139, 100, 106, 0.35);
+/* =========================
+   LETTER OVERLAY
+========================= */
+
+.letter-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  display: none;
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  background: rgba(35, 25, 30, 0.58);
+
+  backdrop-filter: blur(7px);
+
+  z-index: 9998;
+}
+
+.letter-overlay.show {
+  display: flex;
+}
+
+/* =========================
+   BIG LETTER
+========================= */
+
+.big-letter {
+  width: min(700px, 90vw);
+
+  height: min(760px, 85vh);
+
+  background: #fffdf8;
+
+  border-radius: 12px;
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  transform: scale(0.15) translateY(40px);
+
+  transition:
+    transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.5s ease;
+}
+
+.letter-overlay.show .big-letter {
+  opacity: 1;
+
+  transform: scale(1) translateY(0);
+}
+
+/* =========================
+   LETTER CONTENT
+========================= */
+
+.big-letter-content {
+  width: 100%;
+
+  height: 100%;
+
+  padding: 55px 50px;
+
+  overflow-y: auto;
+
+  text-align: center;
+
+  color: #5c4a4a;
+}
+
+.letter-small-title {
+  font-size: 12px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: #a17c80;
+
+  margin-bottom: 15px;
+}
+
+.big-letter-content h2 {
+  font-size: 36px;
+
+  font-weight: 400;
+
+  color: #765458;
+
+  margin-bottom: 30px;
+}
+
+.big-letter-content p {
+  max-width: 570px;
+
+  margin: 0 auto 18px;
+
+  font-size: 16px;
+
+  line-height: 1.9;
+}
+
+.big-letter-content h3 {
+  margin-top: 35px;
+
+  font-size: 22px;
+
+  color: #8b646a;
+
+  line-height: 1.6;
+}
+
+.tap-hint {
+  margin-top: 45px !important;
+
+  font-size: 12px !important;
+
+  opacity: 0.55;
 }
 
 /* =========================
@@ -550,7 +517,7 @@ body.letter-open::before {
 }
 
 /* =========================
-   MAIN PHOTO
+   PHOTO
 ========================= */
 
 .main-photo {
@@ -689,15 +656,13 @@ body.letter-open::before {
   position: absolute;
 
   width: 14px;
-
   height: 20px;
 
   background: #f6b85f;
 
-  border-radius: 50% 50% 50% 50%;
+  border-radius: 50%;
 
   top: -22px;
-
   left: -1px;
 
   animation: flame 0.7s infinite alternate;
@@ -727,8 +692,6 @@ body.letter-open::before {
 
 .wish-message.show {
   display: block;
-
-  animation: letterTextAppear 0.8s ease;
 }
 
 /* =========================
@@ -842,54 +805,53 @@ body.letter-open::before {
 
   .envelope {
     width: 250px;
-
     height: 160px;
   }
 
   .envelope-front {
     border-left-width: 125px;
-
     border-right-width: 125px;
-
     border-bottom-width: 80px;
   }
 
   .envelope-flap {
     border-left-width: 125px;
-
     border-right-width: 125px;
-
     border-top-width: 85px;
   }
 
   .letter-paper {
     width: 195px;
-
     height: 125px;
 
     left: 27px;
-
     top: 18px;
   }
 
-  .letter-paper.expanding {
-    width: 88vw;
+  .big-letter {
+    width: 90vw;
 
     height: 82vh;
+
+    border-radius: 10px;
   }
 
-  .letter-full {
-    padding: 35px 22px;
+  .big-letter-content {
+    padding: 40px 23px;
   }
 
-  .letter-full h2 {
-    font-size: 26px;
+  .big-letter-content h2 {
+    font-size: 27px;
   }
 
-  .letter-full p {
+  .big-letter-content p {
     font-size: 14px;
 
-    line-height: 1.7;
+    line-height: 1.8;
+  }
+
+  .big-letter-content h3 {
+    font-size: 18px;
   }
 
   .photo-grid {

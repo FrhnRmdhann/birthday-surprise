@@ -1,20 +1,16 @@
 /* =========================
-   MUSIC
+   ELEMENTS
 ========================= */
 
 const music = document.getElementById("birthdayMusic");
 
 const musicButton = document.getElementById("musicButton");
 
-/* =========================
-   ENVELOPE
-========================= */
-
 const openButton = document.getElementById("openButton");
 
 const envelope = document.getElementById("envelope");
 
-const letterPaper = document.getElementById("letterPaper");
+const letterOverlay = document.getElementById("letterOverlay");
 
 /* =========================
    OPEN LETTER
@@ -23,7 +19,7 @@ const letterPaper = document.getElementById("letterPaper");
 openButton.addEventListener("click", function (event) {
   event.stopPropagation();
 
-  /* Buka amplop */
+  /* Buka flap */
 
   envelope.classList.add("open");
 
@@ -39,40 +35,12 @@ openButton.addEventListener("click", function (event) {
     });
 
   /*
-       Tunggu flap amplop terbuka
-    */
-
-  setTimeout(function () {
-    letterPaper.classList.add("expanding");
-
-    document.body.classList.add("letter-open");
-  }, 900);
-});
-
-/* =========================
-   KETUK DI MANA SAJA
-========================= */
-
-document.addEventListener("click", function () {
-  /*
-           Kalau surat sedang terbuka,
-           klik/tap di mana saja
-           akan menutup surat.
+           Tunggu amplop terbuka
         */
 
-  if (document.body.classList.contains("letter-open")) {
-    closeLetter();
-  }
-});
-
-/* =========================
-   TOUCH / TAP MOBILE
-========================= */
-
-document.addEventListener("touchend", function () {
-  if (document.body.classList.contains("letter-open")) {
-    closeLetter();
-  }
+  setTimeout(function () {
+    letterOverlay.classList.add("show");
+  }, 900);
 });
 
 /* =========================
@@ -80,17 +48,11 @@ document.addEventListener("touchend", function () {
 ========================= */
 
 function closeLetter() {
-  /*
-       Hilangkan surat besar
-    */
-
-  letterPaper.classList.remove("expanding");
-
-  document.body.classList.remove("letter-open");
+  letterOverlay.classList.remove("show");
 
   /*
-       Setelah animasi selesai,
-       tutup kembali amplop.
+       Setelah surat mengecil/
+       menghilang, tutup amplop
     */
 
   setTimeout(function () {
@@ -99,15 +61,18 @@ function closeLetter() {
 }
 
 /* =========================
-   MUSIC BUTTON
+   TAP ANYWHERE
+========================= */
+
+letterOverlay.addEventListener("click", function () {
+  closeLetter();
+});
+
+/* =========================
+   MUSIC
 ========================= */
 
 musicButton.addEventListener("click", function (event) {
-  /*
-           Jangan dianggap sebagai
-           tap untuk menutup surat.
-        */
-
   event.stopPropagation();
 
   if (music.paused) {
@@ -136,7 +101,7 @@ toCake.addEventListener("click", function () {
 });
 
 /* =========================
-   BLOW CANDLES
+   BLOW CANDLE
 ========================= */
 
 const blowButton = document.getElementById("blowButton");
@@ -152,8 +117,6 @@ blowButton.addEventListener("click", function () {
 
   blowButton.textContent = "✨ Lilinnya sudah padam!";
 
-  blowButton.classList.add("blown");
-
   setTimeout(function () {
     wishMessage.classList.add("show");
 
@@ -165,7 +128,7 @@ blowButton.addEventListener("click", function () {
 });
 
 /* =========================
-   WISH BUTTON
+   WISH
 ========================= */
 
 const wishButton = document.getElementById("wishButton");
