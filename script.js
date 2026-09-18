@@ -1,26 +1,33 @@
+/* =========================
+   MUSIC
+========================= */
+
 const music = document.getElementById("birthdayMusic");
 
 const musicButton = document.getElementById("musicButton");
+
+/* =========================
+   ENVELOPE
+========================= */
 
 const openButton = document.getElementById("openButton");
 
 const envelope = document.getElementById("envelope");
 
-const opening = document.getElementById("opening");
-
-const mainContent = document.getElementById("mainContent");
+const letterPaper = document.getElementById("letterPaper");
 
 /* =========================
-   BUKA AMPLOP
+   OPEN LETTER
 ========================= */
 
-openButton.addEventListener("click", function () {
+openButton.addEventListener("click", function (event) {
+  event.stopPropagation();
+
+  /* Buka amplop */
+
   envelope.classList.add("open");
 
-  /*
-        Musik mulai setelah user
-        menekan tombol.
-    */
+  /* Putar musik */
 
   music
     .play()
@@ -31,42 +38,91 @@ openButton.addEventListener("click", function () {
       console.log("Musik belum bisa dimainkan.");
     });
 
+  /*
+       Tunggu flap amplop terbuka
+    */
+
   setTimeout(function () {
-    opening.style.display = "none";
+    letterPaper.classList.add("expanding");
 
-    mainContent.style.display = "block";
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }, 1200);
+    document.body.classList.add("letter-open");
+  }, 900);
 });
 
 /* =========================
-   MUSIC ON / OFF
+   KETUK DI MANA SAJA
 ========================= */
 
-let musicPlaying = true;
+document.addEventListener("click", function () {
+  /*
+           Kalau surat sedang terbuka,
+           klik/tap di mana saja
+           akan menutup surat.
+        */
 
-musicButton.addEventListener("click", function () {
-  if (music.paused) {
-    music.play();
-
-    musicButton.textContent = "🔊";
-
-    musicPlaying = true;
-  } else {
-    music.pause();
-
-    musicButton.textContent = "🔇";
-
-    musicPlaying = false;
+  if (document.body.classList.contains("letter-open")) {
+    closeLetter();
   }
 });
 
 /* =========================
-   SCROLL KE CAKE
+   TOUCH / TAP MOBILE
+========================= */
+
+document.addEventListener("touchend", function () {
+  if (document.body.classList.contains("letter-open")) {
+    closeLetter();
+  }
+});
+
+/* =========================
+   CLOSE LETTER
+========================= */
+
+function closeLetter() {
+  /*
+       Hilangkan surat besar
+    */
+
+  letterPaper.classList.remove("expanding");
+
+  document.body.classList.remove("letter-open");
+
+  /*
+       Setelah animasi selesai,
+       tutup kembali amplop.
+    */
+
+  setTimeout(function () {
+    envelope.classList.remove("open");
+  }, 700);
+}
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+musicButton.addEventListener("click", function (event) {
+  /*
+           Jangan dianggap sebagai
+           tap untuk menutup surat.
+        */
+
+  event.stopPropagation();
+
+  if (music.paused) {
+    music.play();
+
+    musicButton.textContent = "🔊";
+  } else {
+    music.pause();
+
+    musicButton.textContent = "🔇";
+  }
+});
+
+/* =========================
+   CAKE
 ========================= */
 
 const toCake = document.getElementById("toCake");
@@ -80,7 +136,7 @@ toCake.addEventListener("click", function () {
 });
 
 /* =========================
-   TIUP LILIN
+   BLOW CANDLES
 ========================= */
 
 const blowButton = document.getElementById("blowButton");
@@ -90,10 +146,6 @@ const flames = document.querySelectorAll(".flame");
 const wishMessage = document.getElementById("wishMessage");
 
 blowButton.addEventListener("click", function () {
-  /*
-        Hilangkan semua api
-    */
-
   flames.forEach(function (flame) {
     flame.style.display = "none";
   });
@@ -101,10 +153,6 @@ blowButton.addEventListener("click", function () {
   blowButton.textContent = "✨ Lilinnya sudah padam!";
 
   blowButton.classList.add("blown");
-
-  /*
-        Tampilkan Make A Wish
-    */
 
   setTimeout(function () {
     wishMessage.classList.add("show");
@@ -117,7 +165,7 @@ blowButton.addEventListener("click", function () {
 });
 
 /* =========================
-   MAKE A WISH
+   WISH BUTTON
 ========================= */
 
 const wishButton = document.getElementById("wishButton");
@@ -135,7 +183,7 @@ wishButton.addEventListener("click", function () {
 });
 
 /* =========================
-   KE FOTO
+   PHOTOS
 ========================= */
 
 const toPhotos = document.getElementById("toPhotos");
@@ -149,7 +197,7 @@ toPhotos.addEventListener("click", function () {
 });
 
 /* =========================
-   KE FINAL
+   FINAL
 ========================= */
 
 const toFinal = document.getElementById("toFinal");

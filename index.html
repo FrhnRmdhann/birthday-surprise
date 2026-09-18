@@ -10,12 +10,14 @@
   </head>
 
   <body>
-    <!-- MUSIK -->
+    <!-- =========================
+         MUSIC
+    ========================== -->
+
     <audio id="birthdayMusic" loop>
-      <source src="assets/birthday.mp3" type="audio/mpeg" />
+      <source src="assets/birthday-song.mp3" type="audio/mpeg" />
     </audio>
 
-    <!-- TOMBOL MUSIK -->
     <button class="music-button" id="musicButton">🎵</button>
 
     <!-- =========================
@@ -23,7 +25,11 @@
     ========================== -->
 
     <section class="opening" id="opening">
+      <!-- Falling flowers -->
+
       <div class="petals">
+        <span>🌸</span>
+        <span>🌷</span>
         <span>🌸</span>
         <span>🌷</span>
         <span>🌸</span>
@@ -36,47 +42,107 @@
 
         <h1>
           Hey,<br />
-          <span>Beautiful Nanay</span> 🤍
+          <span>Beautiful</span> 🤍
         </h1>
 
-        <p class="opening-text">Aku punya sesuatu kecil buat adek.</p>
+        <p class="opening-text">Aku punya sesuatu kecil buat kamu.</p>
 
-        <!-- AMPLOP -->
+        <!-- =========================
+                 ENVELOPE
+            ========================== -->
 
         <div class="envelope-container">
           <div class="envelope" id="envelope">
+            <!-- Back -->
+
             <div class="envelope-back"></div>
 
-            <div class="letter-paper">
-              <span>For You 🤍</span>
+            <!-- Paper -->
+
+            <div class="letter-paper" id="letterPaper">
+              <!-- Preview -->
+
+              <div class="letter-preview">
+                <span> For You 🤍 </span>
+              </div>
+
+              <!-- Full Letter -->
+
+              <div class="letter-full">
+                <p class="letter-small-title">a little message for you</p>
+
+                <h2>Happy Birthday 🤍</h2>
+
+                <p>
+                  Hari ini adalah hari spesial kamu. Jadi aku ingin memberikan
+                  sesuatu kecil yang mungkin bisa membuat kamu tersenyum.
+                </p>
+
+                <p>
+                  Semoga di umur yang baru ini, kamu selalu diberikan kesehatan,
+                  kebahagiaan, dan banyak hal baik.
+                </p>
+
+                <p>
+                  Semoga semua hal yang sedang kamu perjuangkan bisa berjalan
+                  dengan lancar.
+                </p>
+
+                <p>Semoga satu per satu impian kamu bisa terwujud.</p>
+
+                <p>
+                  Jangan lupa untuk selalu tersenyum dan menikmati setiap
+                  perjalanan kamu.
+                </p>
+
+                <p>
+                  Dan semoga kamu selalu punya alasan untuk bahagia setiap
+                  harinya.
+                </p>
+
+                <h3>
+                  Once again...<br />
+                  Happy Birthday 🎂
+                </h3>
+
+                <p class="tap-hint">Ketuk di mana saja untuk kembali 🤍</p>
+              </div>
             </div>
 
+            <!-- Front -->
+
             <div class="envelope-front"></div>
+
+            <!-- Flap -->
 
             <div class="envelope-flap"></div>
           </div>
         </div>
+
+        <!-- Open Button -->
 
         <button id="openButton">Buka surat ✨</button>
       </div>
     </section>
 
     <!-- =========================
-         MAIN WEBSITE
+         MAIN CONTENT
     ========================== -->
 
     <main id="mainContent">
-      <!-- BIRTHDAY -->
+      <!-- =========================
+             BIRTHDAY
+        ========================== -->
 
       <section class="birthday-section">
         <p class="small-title">today is your special day</p>
 
         <h1>Happy Birthday</h1>
 
-        <p class="birthday-name">To the beautiful girl Nanay 🤍</p>
+        <p class="birthday-name">To the beautiful girl 🤍</p>
 
         <div class="main-photo">
-          <img src="assets/image1.jpg" alt="Foto" />
+          <img src="assets/foto1.jpg" alt="Foto" />
         </div>
 
         <p class="description">
@@ -97,15 +163,13 @@
         <h2>Make A Wish 🎂</h2>
 
         <p class="cake-instruction">
-          Sebelum lanjut... buat satu keinginan dalam hati adek.
+          Sebelum lanjut... buat satu keinginan dalam hati kamu.
 
           <br />
 
           Setelah itu,
           <strong>tiup lilinnya.</strong> 🕯️
         </p>
-
-        <!-- CAKE -->
 
         <div class="cake-container">
           <div class="cake">
@@ -119,8 +183,6 @@
               <div class="cake-line"></div>
             </div>
           </div>
-
-          <!-- LILIN -->
 
           <div class="candles">
             <div class="candle">
@@ -152,10 +214,7 @@
 
           <p>Sekarang pejamkan mata sebentar dan buat satu permintaan.</p>
 
-          <p>
-            Jangan kasih tahu siapa-siapa 🤫, tapi wajib kasih tau abang
-            ahahahaha
-          </p>
+          <p>Jangan kasih tahu siapa-siapa 🤫</p>
 
           <button id="wishButton">Aku sudah membuat wish 🤍</button>
         </div>
@@ -171,7 +230,7 @@
         <h2>Untuk Kamu 💌</h2>
 
         <div class="letter-content">
-          <p>Happy birthday Nanayy 🤍</p>
+          <p>Happy birthday yaa 🤍</p>
 
           <p>
             Semoga di umur yang baru ini, kamu selalu diberikan kesehatan,
@@ -212,19 +271,19 @@
 
         <div class="photo-grid">
           <div class="photo-card">
-            <img src="assets/image1.jpg" alt="Foto 1" />
+            <img src="assets/foto1.jpg" alt="Foto 1" />
 
             <p>Pretty as always 🤍</p>
           </div>
 
           <div class="photo-card">
-            <img src="assets/image3.jpg" alt="Foto 2" />
+            <img src="assets/foto2.jpg" alt="Foto 2" />
 
             <p>That smile ✨</p>
           </div>
 
           <div class="photo-card">
-            <img src="assets/image2.jpg" alt="Foto 3" />
+            <img src="assets/foto3.jpg" alt="Foto 3" />
 
             <p>Simply beautiful.</p>
           </div>
@@ -243,10 +302,8 @@
         <p class="small-title">one last thing</p>
 
         <h1>
-          Stay Happy.
-          <br />
-          Stay Beautiful.
-          <br />
+          Stay Happy.<br />
+          Stay Beautiful.<br />
           Stay You. 🤍
         </h1>
 
@@ -259,6 +316,10 @@
         <p class="final-text">Once again, happy birthday. 🎂</p>
       </section>
     </main>
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
     <script src="script.js"></script>
   </body>

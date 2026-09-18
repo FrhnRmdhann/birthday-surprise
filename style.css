@@ -1,7 +1,11 @@
+/* =========================
+   GLOBAL
+========================= */
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
@@ -11,75 +15,16 @@ html {
 body {
   font-family: Georgia, "Times New Roman", serif;
 
-  background: #fff8fa;
+  background: linear-gradient(135deg, #fff8f8, #fdf0f3, #fffaf8);
 
-  color: #4d343b;
+  color: #5c4a4a;
 
   overflow-x: hidden;
 }
 
-/* =========================
-   GENERAL
-========================= */
-
-section {
-  min-height: 100vh;
-
-  padding: 80px 20px;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  text-align: center;
-}
-
-.small-title {
-  font-family: Arial, sans-serif;
-
-  font-size: 12px;
-
-  letter-spacing: 3px;
-
-  text-transform: uppercase;
-
-  color: #ad7180;
-
-  margin-bottom: 20px;
-}
-
 button {
-  border: none;
-
+  font-family: inherit;
   cursor: pointer;
-
-  font-family: Arial, sans-serif;
-}
-
-.next-button,
-.blow-button {
-  margin-top: 35px;
-
-  padding: 15px 28px;
-
-  border-radius: 30px;
-
-  background: #b9687d;
-
-  color: white;
-
-  font-size: 14px;
-
-  transition: 0.3s;
-}
-
-.next-button:hover,
-.blow-button:hover {
-  transform: translateY(-3px);
-
-  box-shadow: 0 10px 25px rgba(150, 70, 90, 0.2);
 }
 
 /* =========================
@@ -89,25 +34,22 @@ button {
 .music-button {
   position: fixed;
 
+  top: 20px;
   right: 20px;
 
-  top: 20px;
+  width: 45px;
+  height: 45px;
 
-  width: 50px;
-
-  height: 50px;
-
+  border: none;
   border-radius: 50%;
 
-  background: white;
+  background: rgba(255, 255, 255, 0.85);
 
-  color: #a85e72;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
 
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
 
-  z-index: 1000;
-
-  font-size: 20px;
+  z-index: 10000;
 }
 
 /* =========================
@@ -115,35 +57,130 @@ button {
 ========================= */
 
 .opening {
-  background:
-    radial-gradient(circle at top left, #ffe4ec, transparent 40%),
-    radial-gradient(circle at bottom right, #f5dce3, transparent 40%), #fff8fa;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  overflow: hidden;
+
+  text-align: center;
 }
 
 .opening-content {
-  max-width: 700px;
+  position: relative;
+
+  z-index: 10;
+
+  padding: 30px 20px;
+}
+
+.small-title {
+  font-size: 12px;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+
+  color: #a17c80;
+
+  margin-bottom: 15px;
 }
 
 .opening h1 {
-  font-size: clamp(50px, 10vw, 90px);
-
-  font-weight: normal;
+  font-size: clamp(42px, 8vw, 75px);
 
   line-height: 1.05;
+
+  font-weight: 400;
+
+  color: #654b4f;
 }
 
 .opening h1 span {
-  color: #b9687d;
-
   font-style: italic;
+
+  color: #9a6d74;
 }
 
 .opening-text {
-  font-family: Arial, sans-serif;
+  margin-top: 20px;
 
-  color: #80666e;
+  font-size: 17px;
 
-  margin-top: 25px;
+  color: #806b6b;
+}
+
+/* =========================
+   PETALS
+========================= */
+
+.petals span {
+  position: absolute;
+
+  top: -50px;
+
+  font-size: 25px;
+
+  animation: falling 10s linear infinite;
+
+  opacity: 0.7;
+}
+
+.petals span:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.petals span:nth-child(2) {
+  left: 25%;
+  animation-delay: 2s;
+}
+
+.petals span:nth-child(3) {
+  left: 40%;
+  animation-delay: 4s;
+}
+
+.petals span:nth-child(4) {
+  left: 60%;
+  animation-delay: 1s;
+}
+
+.petals span:nth-child(5) {
+  left: 75%;
+  animation-delay: 3s;
+}
+
+.petals span:nth-child(6) {
+  left: 85%;
+  animation-delay: 5s;
+}
+
+.petals span:nth-child(7) {
+  left: 50%;
+  animation-delay: 6s;
+}
+
+@keyframes falling {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+
+    opacity: 0;
+  }
 }
 
 /* =========================
@@ -152,57 +189,155 @@ button {
 
 .envelope-container {
   display: flex;
+
   justify-content: center;
   align-items: center;
-  margin: 35px 0;
+
+  margin: 40px 0;
 }
 
 .envelope {
   position: relative;
+
   width: 280px;
   height: 180px;
+
   cursor: pointer;
+
   perspective: 1000px;
-  overflow: visible;
 }
 
-/* Bagian belakang amplop */
+/* BACK */
+
 .envelope-back {
   position: absolute;
+
   inset: 0;
+
   background: #f8e9e9;
-  border-radius: 5px;
+
+  border-radius: 6px;
+
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+
   z-index: 1;
 }
 
-/* Kertas */
+/* PAPER */
+
 .letter-paper {
   position: absolute;
+
   width: 220px;
   height: 140px;
+
   left: 30px;
   top: 20px;
 
   background: #fffdf8;
-  border-radius: 3px;
+
+  border-radius: 4px;
+
+  z-index: 2;
+
+  overflow: hidden;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+  transition:
+    transform 1s cubic-bezier(0.22, 0.61, 0.36, 1),
+    width 1s ease,
+    height 1s ease,
+    left 1s ease,
+    top 1s ease,
+    border-radius 1s ease;
+}
+
+/* PAPER PREVIEW */
+
+.letter-preview {
+  width: 100%;
+  height: 100%;
 
   display: flex;
+
   justify-content: center;
   align-items: center;
 
   color: #8b5e62;
+
   font-size: 16px;
+
   font-weight: 600;
-
-  z-index: 2;
-
-  transition: transform 1s ease;
 }
 
-/* Bagian depan amplop */
+/* FULL LETTER */
+
+.letter-full {
+  display: none;
+
+  padding: 45px 35px;
+
+  text-align: center;
+
+  color: #5c4a4a;
+
+  overflow-y: auto;
+
+  height: 100%;
+}
+
+.letter-small-title {
+  font-size: 12px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: #a17c80;
+
+  margin-bottom: 12px;
+}
+
+.letter-full h2 {
+  font-size: 32px;
+
+  margin-bottom: 25px;
+
+  color: #765458;
+}
+
+.letter-full p {
+  font-size: 16px;
+
+  line-height: 1.8;
+
+  margin: 12px auto;
+
+  max-width: 600px;
+}
+
+.letter-full h3 {
+  margin-top: 30px;
+
+  font-size: 20px;
+
+  color: #8b5e62;
+}
+
+.tap-hint {
+  margin-top: 35px !important;
+
+  font-size: 12px !important;
+
+  opacity: 0.55;
+}
+
+/* FRONT */
+
 .envelope-front {
   position: absolute;
+
   left: 0;
   bottom: 0;
 
@@ -216,9 +351,11 @@ button {
   z-index: 4;
 }
 
-/* Penutup atas amplop */
+/* FLAP */
+
 .envelope-flap {
   position: absolute;
+
   top: 0;
   left: 0;
 
@@ -230,526 +367,82 @@ button {
   border-top: 95px solid #eecbd0;
 
   transform-origin: top center;
+
   transition: transform 0.8s ease;
 
   z-index: 5;
 }
 
-/* Saat dibuka */
+/* OPEN ENVELOPE */
+
 .envelope.open .envelope-flap {
   transform: rotateX(180deg);
 }
 
 .envelope.open .letter-paper {
   transform: translateY(-90px);
-  z-index: 3;
+
+  z-index: 6;
 }
 
 /* =========================
-   PETALS
+   LETTER EXPANDING
 ========================= */
 
-.petals span {
+body.letter-open {
+  overflow: hidden;
+}
+
+body.letter-open::before {
+  content: "";
+
   position: fixed;
 
-  top: -30px;
+  inset: 0;
 
-  font-size: 25px;
+  background: rgba(30, 20, 25, 0.55);
 
-  animation: falling 7s linear infinite;
+  backdrop-filter: blur(5px);
 
-  opacity: 0.7;
+  z-index: 9998;
+
+  animation: backdropAppear 0.6s ease;
 }
 
-.petals span:nth-child(1) {
-  left: 10%;
-  animation-delay: 1s;
+.letter-paper.expanding {
+  position: fixed;
+
+  width: min(85vw, 700px);
+
+  height: min(80vh, 750px);
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%) scale(1);
+
+  border-radius: 10px;
+
+  z-index: 9999;
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
 }
 
-.petals span:nth-child(2) {
-  left: 30%;
-  animation-delay: 3s;
-}
-
-.petals span:nth-child(3) {
-  left: 55%;
-  animation-delay: 0s;
-}
-
-.petals span:nth-child(4) {
-  left: 75%;
-  animation-delay: 4s;
-}
-
-.petals span:nth-child(5) {
-  left: 90%;
-  animation-delay: 2s;
-}
-
-@keyframes falling {
-  0% {
-    transform: translateY(-30px) rotate(0deg);
-  }
-
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-  }
-}
-
-/* =========================
-   MAIN
-========================= */
-
-#mainContent {
+.letter-paper.expanding .letter-preview {
   display: none;
 }
 
-/* =========================
-   BIRTHDAY
-========================= */
-
-.birthday-section {
-  flex-direction: column;
-}
-
-.birthday-section h1 {
-  font-size: clamp(50px, 9vw, 80px);
-
-  font-weight: normal;
-
-  font-style: italic;
-
-  color: #9f566b;
-}
-
-.birthday-name {
-  font-family: Arial, sans-serif;
-
-  margin-top: 15px;
-
-  color: #80666e;
-}
-
-.main-photo {
-  width: min(390px, 90%);
-
-  margin: 45px auto 30px;
-}
-
-.main-photo img {
-  width: 100%;
-
+.letter-paper.expanding .letter-full {
   display: block;
 
-  border-radius: 200px 200px 20px 20px;
-
-  box-shadow: 0 20px 50px rgba(80, 40, 50, 0.15);
+  animation: letterTextAppear 0.8s ease forwards;
 }
 
-.description {
-  max-width: 550px;
-
-  font-family: Arial, sans-serif;
-
-  line-height: 1.8;
-
-  color: #765d65;
-}
-
-/* =========================
-   CAKE
-========================= */
-
-.cake-section {
-  flex-direction: column;
-
-  background: #fbeef2;
-}
-
-.cake-section h2 {
-  font-size: 45px;
-
-  font-weight: normal;
-}
-
-.cake-instruction {
-  font-family: Arial, sans-serif;
-
-  max-width: 500px;
-
-  line-height: 1.8;
-
-  color: #765d65;
-}
-
-/* CAKE CONTAINER */
-
-.cake-container {
-  position: relative;
-
-  width: 350px;
-
-  height: 300px;
-
-  margin-top: 35px;
-}
-
-/* CAKE */
-
-.cake {
-  position: absolute;
-
-  left: 50%;
-
-  bottom: 20px;
-
-  transform: translateX(-50%);
-}
-
-.cake-top {
-  width: 280px;
-
-  height: 80px;
-
-  background: #f5c1c9;
-
-  border-radius: 50%;
-
-  position: relative;
-
-  z-index: 2;
-}
-
-.cream {
-  position: absolute;
-
-  width: 100%;
-
-  height: 30px;
-
-  top: 20px;
-
-  background: #fff5f5;
-
-  border-radius: 50%;
-}
-
-.cake-body {
-  width: 280px;
-
-  height: 110px;
-
-  background: #d98596;
-
-  margin-top: -35px;
-
-  border-radius: 0 0 20px 20px;
-}
-
-.cake-line {
-  height: 10px;
-
-  width: 240px;
-
-  margin: 20px auto;
-
-  background: #f4b4c0;
-
-  border-radius: 20px;
-}
-
-/* CANDLES */
-
-.candles {
-  position: absolute;
-
-  top: 45px;
-
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  display: flex;
-
-  gap: 25px;
-}
-
-.candle {
-  width: 16px;
-
-  height: 65px;
-
-  border-radius: 5px;
-
-  background: repeating-linear-gradient(
-    135deg,
-    #fff 0px,
-    #fff 7px,
-    #d77f91 7px,
-    #d77f91 14px
-  );
-}
-
-.flame {
-  width: 19px;
-
-  height: 27px;
-
-  position: absolute;
-
-  margin-left: -1px;
-
-  margin-top: -30px;
-
-  background: #f5a43f;
-
-  border-radius: 50% 50% 50% 50%;
-
-  box-shadow: 0 0 20px rgba(245, 164, 63, 0.7);
-
-  animation: flame 0.2s infinite alternate;
-}
-
-@keyframes flame {
-  from {
-    transform: scale(1) rotate(-3deg);
-  }
-
-  to {
-    transform: scale(1.15) rotate(3deg);
-  }
-}
-
-/* API BUTTON */
-
-.blow-button {
-  font-size: 16px;
-}
-
-.blow-button.blown {
-  background: #ddd;
-
-  color: #777;
-}
-
-/* WISH */
-
-.wish-message {
-  display: none;
-
-  margin-top: 30px;
-
-  max-width: 500px;
-
-  padding: 35px;
-
-  background: white;
-
-  border-radius: 20px;
-
-  box-shadow: 0 15px 40px rgba(80, 40, 50, 0.08);
-
-  animation: appear 0.8s ease;
-}
-
-.wish-message.show {
-  display: block;
-}
-
-.wish-message h2 {
-  font-size: 35px;
-
-  font-weight: normal;
-
-  color: #a45b70;
-}
-
-.wish-message p {
-  font-family: Arial, sans-serif;
-
-  line-height: 1.8;
-
-  color: #765d65;
-}
-
-#wishButton {
-  margin-top: 20px;
-
-  padding: 14px 25px;
-
-  border-radius: 30px;
-
-  background: #b9687d;
-
-  color: white;
-}
-
-/* =========================
-   LETTER
-========================= */
-
-.letter-section {
-  flex-direction: column;
-}
-
-.letter-section h2,
-.photos-section h2 {
-  font-size: 45px;
-
-  font-weight: normal;
-}
-
-.letter-content {
-  max-width: 650px;
-
-  padding: 45px;
-
-  margin-top: 25px;
-
-  text-align: left;
-
-  background: white;
-
-  border-radius: 8px;
-
-  box-shadow: 0 15px 40px rgba(80, 40, 50, 0.08);
-}
-
-.letter-content p {
-  font-family: Arial, sans-serif;
-
-  line-height: 1.9;
-
-  margin-bottom: 20px;
-
-  color: #765d65;
-}
-
-.letter-content h3 {
-  font-size: 30px;
-
-  font-weight: normal;
-
-  text-align: center;
-
-  color: #a45b70;
-}
-
-/* =========================
-   PHOTOS
-========================= */
-
-.photos-section {
-  flex-direction: column;
-
-  background: #fbeef2;
-}
-
-.photo-grid {
-  width: min(900px, 95%);
-
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 25px;
-
-  margin-top: 20px;
-}
-
-.photo-card {
-  background: white;
-
-  padding: 10px;
-
-  box-shadow: 0 10px 25px rgba(80, 40, 50, 0.1);
-}
-
-.photo-card:nth-child(1) {
-  transform: rotate(-3deg);
-}
-
-.photo-card:nth-child(2) {
-  transform: rotate(2deg);
-}
-
-.photo-card:nth-child(3) {
-  transform: rotate(-1deg);
-}
-
-.photo-card img {
-  width: 100%;
-
-  aspect-ratio: 3 / 4;
-
-  object-fit: cover;
-}
-
-.photo-card p {
-  padding: 15px;
-
-  font-style: italic;
-}
-
-/* =========================
-   FINAL
-========================= */
-
-.final-section {
-  flex-direction: column;
-}
-
-.final-section h1 {
-  font-size: clamp(42px, 8vw, 70px);
-
-  font-weight: normal;
-
-  font-style: italic;
-
-  color: #9f566b;
-
-  line-height: 1.2;
-}
-
-.final-section p {
-  max-width: 550px;
-
-  font-family: Arial, sans-serif;
-
-  line-height: 1.8;
-
-  color: #765d65;
-}
-
-.final-hearts {
-  color: #bd6c7e;
-
-  font-size: 30px;
-
-  margin-bottom: 20px;
-}
-
-.flowers {
-  font-size: 35px;
-
-  margin-top: 35px;
-}
-
-.final-text {
-  margin-top: 30px;
-
-  font-style: italic;
-}
-
-/* =========================
-   ANIMATION
-========================= */
-
-@keyframes appear {
+@keyframes letterTextAppear {
   from {
     opacity: 0;
 
-    transform: translateY(30px);
+    transform: translateY(25px);
   }
 
   to {
@@ -759,32 +452,457 @@ button {
   }
 }
 
+@keyframes backdropAppear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================
+   OPEN BUTTON
+========================= */
+
+#openButton {
+  padding: 13px 28px;
+
+  border: none;
+
+  border-radius: 30px;
+
+  background: #8b646a;
+
+  color: white;
+
+  font-size: 15px;
+
+  box-shadow: 0 8px 25px rgba(139, 100, 106, 0.25);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+#openButton:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 12px 30px rgba(139, 100, 106, 0.35);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+#mainContent {
+  display: block;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.birthday-section,
+.cake-section,
+.letter-section,
+.photos-section,
+.final-section {
+  min-height: 100vh;
+
+  padding: 100px 20px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+.birthday-section h1,
+.final-section h1 {
+  font-size: clamp(40px, 8vw, 70px);
+
+  font-weight: 400;
+
+  color: #654b4f;
+}
+
+.birthday-name {
+  margin: 15px 0 30px;
+
+  font-size: 18px;
+
+  color: #8b686d;
+}
+
+.description {
+  max-width: 600px;
+
+  margin: 25px auto;
+
+  line-height: 1.8;
+}
+
+/* =========================
+   MAIN PHOTO
+========================= */
+
+.main-photo {
+  width: min(400px, 85vw);
+
+  overflow: hidden;
+
+  border-radius: 15px;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.main-photo img {
+  width: 100%;
+
+  display: block;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.next-button,
+.blow-button,
+#wishButton {
+  border: none;
+
+  border-radius: 30px;
+
+  padding: 13px 25px;
+
+  background: #8b646a;
+
+  color: white;
+
+  margin-top: 25px;
+
+  font-size: 15px;
+}
+
+/* =========================
+   CAKE
+========================= */
+
+.cake-section h2,
+.letter-section h2,
+.photos-section h2 {
+  font-size: 40px;
+
+  font-weight: 400;
+
+  color: #654b4f;
+}
+
+.cake-instruction {
+  margin-top: 20px;
+
+  line-height: 1.8;
+}
+
+.cake-container {
+  position: relative;
+
+  margin: 70px 0 30px;
+}
+
+.cake {
+  position: relative;
+
+  width: 220px;
+}
+
+.cake-top {
+  height: 45px;
+
+  background: #e6b7bd;
+
+  border-radius: 50%;
+}
+
+.cream {
+  width: 100%;
+
+  height: 15px;
+
+  background: #fff4f4;
+
+  border-radius: 50%;
+}
+
+.cake-body {
+  height: 100px;
+
+  background: #d99da5;
+
+  border-radius: 0 0 20px 20px;
+}
+
+.cake-line {
+  height: 3px;
+
+  background: rgba(255, 255, 255, 0.35);
+
+  margin-top: 30px;
+}
+
+.candles {
+  position: absolute;
+
+  top: -65px;
+
+  left: 0;
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 25px;
+}
+
+.candle {
+  width: 12px;
+
+  height: 60px;
+
+  background: #f2d4d8;
+
+  border-radius: 4px;
+
+  position: relative;
+}
+
+.flame {
+  position: absolute;
+
+  width: 14px;
+
+  height: 20px;
+
+  background: #f6b85f;
+
+  border-radius: 50% 50% 50% 50%;
+
+  top: -22px;
+
+  left: -1px;
+
+  animation: flame 0.7s infinite alternate;
+}
+
+@keyframes flame {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.15) translateY(-2px);
+  }
+}
+
+/* =========================
+   WISH
+========================= */
+
+.wish-message {
+  display: none;
+
+  max-width: 500px;
+
+  margin-top: 40px;
+}
+
+.wish-message.show {
+  display: block;
+
+  animation: letterTextAppear 0.8s ease;
+}
+
+/* =========================
+   LETTER SECTION
+========================= */
+
+.letter-content {
+  max-width: 650px;
+
+  margin-top: 35px;
+
+  line-height: 1.9;
+
+  font-size: 17px;
+}
+
+.letter-content p {
+  margin: 15px 0;
+}
+
+.letter-content h3 {
+  margin-top: 30px;
+
+  font-size: 25px;
+
+  color: #8b646a;
+}
+
+/* =========================
+   PHOTOS
+========================= */
+
+.photo-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+
+  width: min(900px, 90vw);
+
+  margin-top: 40px;
+}
+
+.photo-card {
+  background: white;
+
+  padding: 10px;
+
+  border-radius: 10px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.photo-card img {
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+
+  border-radius: 6px;
+}
+
+.photo-card p {
+  padding: 12px 5px;
+
+  color: #80656a;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final-section {
+  background: linear-gradient(135deg, #fff4f5, #fcecef);
+}
+
+.final-section p {
+  max-width: 600px;
+
+  margin-top: 25px;
+
+  line-height: 1.8;
+}
+
+.final-hearts {
+  font-size: 30px;
+
+  margin-bottom: 25px;
+}
+
+.flowers {
+  font-size: 30px;
+
+  margin-top: 30px;
+}
+
+.final-text {
+  font-style: italic;
+}
+
 /* =========================
    MOBILE
 ========================= */
 
-@media (max-width: 650px) {
-  section {
-    padding: 70px 18px;
+@media (max-width: 600px) {
+  .opening h1 {
+    font-size: 45px;
+  }
+
+  .envelope {
+    width: 250px;
+
+    height: 160px;
+  }
+
+  .envelope-front {
+    border-left-width: 125px;
+
+    border-right-width: 125px;
+
+    border-bottom-width: 80px;
+  }
+
+  .envelope-flap {
+    border-left-width: 125px;
+
+    border-right-width: 125px;
+
+    border-top-width: 85px;
+  }
+
+  .letter-paper {
+    width: 195px;
+
+    height: 125px;
+
+    left: 27px;
+
+    top: 18px;
+  }
+
+  .letter-paper.expanding {
+    width: 88vw;
+
+    height: 82vh;
+  }
+
+  .letter-full {
+    padding: 35px 22px;
+  }
+
+  .letter-full h2 {
+    font-size: 26px;
+  }
+
+  .letter-full p {
+    font-size: 14px;
+
+    line-height: 1.7;
   }
 
   .photo-grid {
     grid-template-columns: 1fr;
 
-    max-width: 350px;
+    width: min(350px, 90vw);
   }
 
-  .cake-container {
-    transform: scale(0.85);
-
-    margin-top: 15px;
-  }
-
-  .letter-content {
-    padding: 30px 25px;
-  }
-
-  .envelope-container {
-    transform: scale(0.85);
+  .birthday-section,
+  .cake-section,
+  .letter-section,
+  .photos-section,
+  .final-section {
+    padding: 80px 20px;
   }
 }
